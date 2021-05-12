@@ -11,7 +11,10 @@ Promise.all([promise1, promise2, promise3]).then((values) => {
 const promise4 = new Promise((resolve, reject) => {
   reject(new Error('reject'));
 });
-Promise.all([promise1, promise2, promise3, promise4]).then((values) => {
+const promise5 = new Promise((resolve, reject) => {
+  reject(new Error('reject5'));
+});
+Promise.all([promise1, promise2, promise3, promise4, promise5]).then((values) => {
   console.log(values);
 }).catch(error => {
   console.error(error.message) // reject
