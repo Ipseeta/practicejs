@@ -5,5 +5,17 @@ const promise3 = new Promise((resolve, reject) => {
 });
 
 Promise.all([promise1, promise2, promise3]).then((values) => {
-  console.log(values);
+  console.log(values); //[3, 42, 'foo']
 });
+
+const promise4 = new Promise((resolve, reject) => {
+  reject(new Error('reject'));
+});
+Promise.all([promise1, promise2, promise3, promise4]).then((values) => {
+  console.log(values);
+}).catch(error => {
+  console.error(error.message) // reject
+});
+
+//Promise.all waits for all promises to be resolved or for any to be rejected. 
+//Promise.all waits for all fulfillments (or the first rejection).
