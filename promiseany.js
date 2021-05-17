@@ -6,3 +6,4 @@ const promises = [promise1, promise2, promise3];
 
 Promise.any(promises).then((value) => console.log(value));//quick
 //returns a single promise that resolves with the value from that promise
+//Promise.any() rejects with an AggregateError if no promise fulfils
