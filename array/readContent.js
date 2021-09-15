@@ -21,11 +21,24 @@ const readFromFile = (file) => {
     });
 }
 
+// (async () => {
+//     try {
+//         const response = await Promise.all(files.map(file => readFromFile(file)));
+//         console.log(response);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// })(); 
+// or w/o Promise.all
 (async () => {
-    try {
-        const response = await Promise.all(files.map(file => readFromFile(file)));
-        console.log(response);
-    } catch (error) {
-        console.log(error);
+    let result = [];
+    for (let i = 0; i < files.length; i++) {
+        try {
+            const response = await readFromFile(files[i]);
+            result.push(response);
+        } catch (error) {
+            console.log(error);
+        }
     }
-})();    
+    console.log(result);
+})();
